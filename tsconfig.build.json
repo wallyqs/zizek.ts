@@ -1,0 +1,17 @@
+{
+  // Compiles the library to dist/ for npm. Node strips types from local .ts
+  // files but refuses to for anything under node_modules, so the published
+  // package ships JavaScript plus declarations, built by `npm run build`
+  // (which `npm pack` and `npm publish` run first, through prepack).
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "declaration": true,
+    "rewriteRelativeImportExtensions": true,
+    // Members marked @internal stay out of the published declarations.
+    "stripInternal": true,
+    "removeComments": false
+  },
+  "include": ["index.ts", "shell.ts", "generators.ts", "stateful.ts", "database.ts", "zizek_gen.ts", "node.d.ts"]
+}

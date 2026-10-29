@@ -1,0 +1,58 @@
+{
+  "name": "@less-than-nothing/zizek",
+  "version": "0.1.0",
+  "description": "Property-based testing with portable, cross-language reproduce blobs, modeled on Hegel and Hypothesis.",
+  "keywords": [
+    "property-based-testing",
+    "testing",
+    "quickcheck",
+    "hypothesis",
+    "hegel",
+    "shrinking",
+    "fuzzing"
+  ],
+  "license": "Apache-2.0",
+  "author": "Waldemar Quevedo",
+  "homepage": "https://github.com/wallyqs/zizek.ts#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wallyqs/zizek.ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wallyqs/zizek.ts/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    "docs/assets/",
+    "CHANGELOG.md",
+    "GUIDE.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22.18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "prepack": "npm run build",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node --test test_*.ts"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2"
+  }
+}
